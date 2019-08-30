@@ -53,5 +53,24 @@ body {
 }
 
 .score-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 5px;
+}
+.score-table td {
+	text-align: center;
+}
+
+.score-table th, td {
+	border: 2px solid blue;
+	padding: 4px;
+}
+.score{
 	margin: auto;
+}
+
+.button {
+	color: white;
+	background-color: blue;
+	border-color: blue;
 }

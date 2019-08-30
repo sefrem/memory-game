@@ -3,6 +3,7 @@ const cards = document.querySelectorAll(".memory-card");
 const table = document.querySelector('.score-table');
 const newButton = document.querySelector('.new-game');
 const clearButton = document.querySelector('.clear-score');
+const randomNames = ['Инкогнито', 'NoOne', 'Скрываюсь', 'Неопознанный', 'Hyde'];
 
 let isFlipped = true, firstCard, secondCard, lockBoard, counter = 0, name, score = [];
 
@@ -69,6 +70,7 @@ function endGame() {
 }
 
 function scoreBoardUpdate() { //for each new score we add a new "name:score" value to the "score" array and then sort it by the second element of the pair("score"). After that we update table and then save an array to the localStorage as JSON string.
+ 	if(name === null) name = randomNames[Math.floor(Math.random()*randomNames.length-1)];
  	score.push([`${name}`, +`${counter}`]);
  	score.sort((a, b) => a[1] > b[1] ? 1 : -1);
  	if(score.length > 5) score.pop()
