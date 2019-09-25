@@ -61,8 +61,8 @@ counter = 0;
 }
 
 function endGame() {
-	if(counter>=6 && [...cards].every(card => card.classList.contains('flip-card'))) { //If counter is equal or more than the possible minimal and all the cards have "flip-card" class on them, 
-		return new Promise(function(resolve, reject) {								// we display the prompt window after the 500ms timeout, in order for the flip card animation to end before window appears.
+	if([...cards].every(card => card.classList.contains('flip-card'))) { //If all the cards have "flip-card" class on them, 
+		return new Promise(function(resolve) {								// we display the prompt window after the 500ms timeout, in order for the flip card animation to end before window appears.
 			setTimeout(() => resolve(name = prompt(`GOOD ONE. It only took you ${counter} tries to end this.\nPlease enter your name to save your score`)), 500);
 		})
 		.then(result => scoreBoardUpdate());
@@ -70,7 +70,7 @@ function endGame() {
 }
 
 function scoreBoardUpdate() { //for each new score we add a new "name:score" value to the "score" array and then sort it by the second element of the pair("score"). After that we update table and then save an array to the localStorage as JSON string.
- 	if(name === null) name = randomNames[Math.floor(Math.random()*randomNames.length-1)];
+	 if(name === null || name === "") name = randomNames[Math.floor(Math.random()*randomNames.length-1)];
  	score.push([`${name}`, +`${counter}`]);
  	score.sort((a, b) => a[1] > b[1] ? 1 : -1);
  	if(score.length > 5) score.pop()
@@ -109,6 +109,6 @@ clearButton.addEventListener('click', clearBoard);
 
 function finishTest() {
 	cards.forEach(card => card.classList.add('flip-card'));
-	counter = 6;
+	
 }
 
