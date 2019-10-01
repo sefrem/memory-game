@@ -107,8 +107,4 @@ clearButton.addEventListener('click', clearBoard);
 
 
 
-function finishTest() {
-	cards.forEach(card => card.classList.add('flip-card'));
-	
-}
 
